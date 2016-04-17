@@ -7,29 +7,34 @@ var {
   View,
   TabBarIOS,
   NavigatorIOS,
+  ScrollView
 } = React;
 console.log('Home加载进来啦！！！！！');
 
-console.log(require('image!icon_tabbar_homepage_selected'));
+// console.log(require('image!icon_tabbar_homepage_selected'));
+
 var Sign = React.createClass({
   getInitialState(){
-    return null;
+    return {
+      test:'test'
+    }
   },
-  render(){
+  render: function(){
     return(
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          需要前往没有做出来的登录页面
+      <ScrollView>
+        <Text>
+          测试
         </Text>
-      </View>
+      </ScrollView>
     )
   }
-})
+});
+import Location from './Location';
 
 var Home = React.createClass({
   getInitialState(){
     return {
-      selectedTab:'Sign'
+      selectedTab:'sign'
     }
   },
   changeTab(tabName){
@@ -48,11 +53,10 @@ var Home = React.createClass({
           selected = { this.state.selectedTab === 'sign'}>
           <NavigatorIOS
             style={styles.container}
-
             initialRoute={{
-            title: '签到',
-            component: Sign,
-            rightButtonIcon: require('image!icon_tabbar_onsite'),
+              title: '签到',
+              component: Location,
+              rightButtonIcon: require('image!icon_tabbar_onsite_selected'),
             }}
           />
         </TabBarIOS.Item>
@@ -65,8 +69,8 @@ var Home = React.createClass({
           <NavigatorIOS
             style={styles.container}
             initialRoute={{
-            title: '主页',
-            component: Sign,
+              title: '主页',
+              component: Sign,
             }}
           />
         </TabBarIOS.Item>
@@ -79,8 +83,8 @@ var Home = React.createClass({
           <NavigatorIOS
             style={styles.container}
             initialRoute={{
-            title: '商家',
-            component: Sign,
+              title: '商家',
+              component: Sign,
             }}
           />
         </TabBarIOS.Item>
@@ -93,8 +97,8 @@ var Home = React.createClass({
           <NavigatorIOS
             style={styles.container}
             initialRoute={{
-            title: '更多',
-            component: Sign,
+              title: '更多',
+              component: Sign,
             }}
           />
         </TabBarIOS.Item>

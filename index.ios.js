@@ -16,6 +16,11 @@ import Home from './Home';
 import TimerMixin from 'react-timer-mixin';
 
 import config from './config';
+
+import Location from './Location';
+
+console.log('config');
+
 var log = console.log;
 
 import SplashScreen from './Splash.js';
