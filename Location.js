@@ -111,6 +111,12 @@ var Location = React.createClass({
   sign:function(){
     //进行签到逻辑  TODO
     console.log('开始签到流程');
+    var passMes = {
+        latitude:this.state.latitude,
+        longitude:this.state.longitude,
+        selectedProject:this.state.selectedProject,
+        sonProjectIndex:this.state.sonProjectIndex
+    }
     //此处进行路由跳转
     this.props.navigator.push({
         component:Sign,
@@ -120,6 +126,9 @@ var Location = React.createClass({
         OnRightButtonPress:function(){
             // 此处放弃拍照 直接签到
             console.log('此功能暂未开发');
+        },
+        passProps:{
+            passMes:passMes
         }
     });
 
@@ -132,8 +141,6 @@ var Location = React.createClass({
       select_son_arr = [];
     }
     var project_id_arr = Object.keys(this.state.resultProject);
-    console.log(project_id_arr);
-    console.log(select_son_arr);
     console.log(this.state);
     //此时两个数组的值 是稳定的
 

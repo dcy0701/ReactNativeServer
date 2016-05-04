@@ -53,6 +53,7 @@ var Sign = React.createClass({
               rightButtonTitle:'重新拍摄',
               passProps:{
                   imageUrl:data,
+                  passMes:this.props.passMes
               },
               OnRightButtonPress:function(){
                   // 此处放弃拍照 直接签到
