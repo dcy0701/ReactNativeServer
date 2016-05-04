@@ -12,6 +12,9 @@ import React, {
   AsyncStorage
 } from 'react-native';
 
+
+// 第三方库
+
 import Home from './Home';
 import TimerMixin from 'react-timer-mixin';
 

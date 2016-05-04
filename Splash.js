@@ -55,7 +55,7 @@ var SplashScreen = React.createClass({
       text = this.state.cover.text;
     } else {
       img = require('image!splash');
-      text = '';
+      text = '董崇洋';
     }
 
     return(
@@ -71,7 +71,7 @@ var SplashScreen = React.createClass({
             ]
           }} />
         <Text style={styles.text}>
-            {text}
+            @dcy0701
         </Text>
         <Image style={styles.logo} source={require('image!splash_logo')} />
       </View>

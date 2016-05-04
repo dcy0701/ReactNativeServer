@@ -21,7 +21,7 @@ import React,{
 var PickerItemIOS = PickerIOS.Item;
 //定位测试
 import {API,MAP_API} from './config';
-
+import Sign from './camera';
 
 var UPDATE_API = API.UPDATE_API;
 var LOCATION_API = API.LOCATION_API;
@@ -38,7 +38,7 @@ Geolocation.getCurrentPosition(function(data){
   console.log('location error');
 });
 
-console.log('加载了定位模块')
+console.log('加载了定位模块');
 
 var Location = React.createClass({
   getInitialState(){
@@ -111,9 +111,19 @@ var Location = React.createClass({
   sign:function(){
     //进行签到逻辑  TODO
     console.log('开始签到流程');
+    //此处进行路由跳转
+    this.props.navigator.push({
+        component:Sign,
+        title:'拍照',
+        rightButtonTitle:'放弃拍照',
+        translucent:'true',
+        OnRightButtonPress:function(){
+            // 此处放弃拍照 直接签到
+            console.log('此功能暂未开发');
+        }
+    });
 
-
-
+    // console.log(this.props.navigator);
   },
   render:function(){
     var select_son_arr = this.state.resultProject[this.state.selectedProject];
