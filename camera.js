@@ -81,7 +81,7 @@ var styles = StyleSheet.create({
   },
   capture: {
     flex: 0,
-    backgroundColor: '#fff',
+    backgroundColor: '#FE433C',
     borderRadius: 5,
     //color: 'pink',
     padding: 10,
@@ -89,7 +89,8 @@ var styles = StyleSheet.create({
   },
   btn:{
       fontSize:12,
-      color:'pink',
+      color:'white',
+      fontWeight:'bold'
   },
   container:{
     flex:1,

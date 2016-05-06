@@ -15,7 +15,9 @@ import React,{
     Picker,
     PickerIOS,
     TouchableOpacity,
-    AlertIOS
+    AlertIOS,
+    Dimensions,
+    MapView
 } from 'react-native';
 
 var PickerItemIOS = PickerIOS.Item;
@@ -43,8 +45,8 @@ console.log('加载了定位模块');
 var Location = React.createClass({
   getInitialState(){
     return {
-      longitude:'loading...',
-      latitude:'loading...',
+      longitude:'0',
+      latitude:'0',
       selectedProject:0,
       detailPositon:'loading...',
       sonProjectIndex:0,
@@ -123,6 +125,7 @@ var Location = React.createClass({
         title:'拍照',
         rightButtonTitle:'放弃拍照',
         translucent:'true',
+        navigationBarHidden:true,
         OnRightButtonPress:function(){
             // 此处放弃拍照 直接签到
             console.log('此功能暂未开发');
@@ -143,57 +146,68 @@ var Location = React.createClass({
     var project_id_arr = Object.keys(this.state.resultProject);
     console.log(this.state);
     //此时两个数组的值 是稳定的
-
-
-
     //二级联动  默认都是0 0
     //数组
     return(
         <ScrollView  style={{flex:1}}>
-          <View>
-            <Text style={styles.textview}>经度: {this.state.longitude}</Text>
-            <Text style={styles.textview}>纬度: {this.state.latitude}</Text>
-            <Text style={styles.textview}>详细位置是: {this.state.detailPositon}</Text>
+          <View style={styles.picker_contain}>
+            <View style={styles.picker1}>
+              <Text style={{fontSize:22,color:'#FE433C',textAlign:'center',padding:0}}>
+                父工程号
+              </Text>
+              <PickerIOS
+                selectedValue={this.state.selectedProject}
+                itemStyle={{fontSize: 16, color: '#FE433C', textAlign: 'center', fontWeight: 'bold'}}
+                onValueChange={(Project_id) => {
+                    this.setState({ selectedProject: Project_id});
+                    //XXX  FIXME  TODO 这句话很重要
+                    this.setState({ sonProjectIndex: this.state.resultProject[this.state.selectedProject][0]});
+                  }
+                }>
+                {project_id_arr.map((Project_id) => (
+                  <PickerItemIOS
+                    key={Project_id}
+                    value={Project_id}
+                    label={Project_id}
+                  />
+                ))}
+              </PickerIOS>
+            </View>
+            <View style={styles.picker2}>
+              <Text style={{fontSize:22,color:'#FE433C',textAlign:'center',padding:0}}>
+                子工程号
+              </Text>
+              <PickerIOS
+                  selectedValue={this.state.sonProjectIndex}
+                  itemStyle={{fontSize: 16, color: '#FE433C', textAlign: 'center', fontWeight: 'bold'}}
+                  // key={this.state.carMake}
+                  onValueChange={(value) => this.setState({sonProjectIndex:value})}>
+                  {select_son_arr.map((value) => (
+                    <PickerItemIOS
+                      key={String(value)}
+                      value={String(value)}
+                      label={String(value)}
+                    />
+              ))}
+            </PickerIOS>
+            </View>
           </View>
-          <Text style={{fontSize:25,color:'#33CC00',textAlign:'center',padding:5}}>
-            请选择你的父工程号
-          </Text>
-          <PickerIOS
-            selectedValue={this.state.selectedProject}
-            itemStyle={{fontSize: 20, color: 'red', textAlign: 'center', fontWeight: 'bold'}}
-            onValueChange={(Project_id) => {
-                this.setState({ selectedProject: Project_id});
-                //XXX  FIXME  TODO 这句话很重要
-                this.setState({ sonProjectIndex: this.state.resultProject[this.state.selectedProject][0]});
-              }
-            }>
-            {project_id_arr.map((Project_id) => (
-              <PickerItemIOS
-                key={Project_id}
-                value={Project_id}
-                label={Project_id}
-              />
-            ))}
-          </PickerIOS>
-          <Text style={{fontSize:25,color:'#33CC00',textAlign:'center',padding:0}}>
-            请选择你的子工程号
-          </Text>
-          <PickerIOS
-          selectedValue={this.state.sonProjectIndex}
-          itemStyle={{fontSize: 20, color: 'blue', textAlign: 'center', fontWeight: 'bold'}}
-          // key={this.state.carMake}
-          onValueChange={(value) => this.setState({sonProjectIndex:value})}>
-          {select_son_arr.map((value) => (
-            <PickerItemIOS
-              key={String(value)}
-              value={String(value)}
-              label={String(value)}
-            />
-          ))}
-        </PickerIOS>
+          <MapView
+            showsUserLocation={true}
+            region={{latitude: parseFloat(this.state.latitude),
+                    longitude: parseFloat(this.state.longitude),
+                    latitudeDelta: 0.05,
+                    longitudeDelta: 0.05}}
+            style={styles.map}
+          />
+        <View style={styles.text}>
+          <Text style={styles.textview}>经度: {this.state.longitude}</Text>
+          <Text style={styles.textview}>纬度: {this.state.latitude}</Text>
+          <Text style={styles.textview}>详细位置是: {this.state.detailPositon}</Text>
+        </View>
         <View style={{flex:1,justifyContent:'center',width:200,marginLeft:100}}>
           <TouchableOpacity onPress={this.sign}>
-            <Text style={{color:'white',backgroundColor:'pink',fontSize:40,textAlign:'center'}}>拍照并签到</Text>
+            <Text style={{top:-170,color:'white',backgroundColor:'#FE433C',fontSize:24,textAlign:'center',borderRadius:15,padding:10}}>立即签到</Text>
           </TouchableOpacity>
         </View>
         </ScrollView>
@@ -214,16 +228,42 @@ var Location = React.createClass({
 
 
 var styles = StyleSheet.create({
+  map:{
+    top:-250,
+    height: 180,
+    margin: 10,
+    borderWidth: 1,
+    borderColor: '#000000',
+  },
+  text:{
+    top:-230,
+    padding:5,
+    marginTop:-20
+  },
   pageView:{
     backgroundColor: '#fff',
     flex:1
+  },
+  picker_contain:{
+    flex:1
+  },
+  picker1:{
+    flex:1,
+    width:Dimensions.get('window').width/2-20,
+    left:10
+  },
+  picker2:{
+    width:Dimensions.get('window').width/2-20,
+    margin:0,
+    left:Dimensions.get('window').width/2+10,
+    top: -238.5
   },
   container:{
     flex:1
   },
   textview:{
     fontSize:15,
-    color: '#003300'
+    color: 'gray'
   }
 });
 

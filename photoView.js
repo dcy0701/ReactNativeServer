@@ -56,8 +56,8 @@ const PhotoView = React.createClass({
 
                 }else if(json.status=='-1'){
                     AlertIOS.alert(
-                      json.text,
-                      '是否确认申请为负责人？',
+                      '签到成功但是'+json.text,
+                      '是否申请为负责人？',
                       [
                         {text: '确定', onPress: () => {
                             console.log(API.UPDATECHAGEMENT_API+'?user='+username+'&project_id='+project_id);
@@ -65,7 +65,9 @@ const PhotoView = React.createClass({
                             .then(function(res){
                                 console.log(res);
                                 if(res=='apply error'){
-                                    alert('工程不存在');
+                                    AlertIOS.alert('工程不存在');
+                                }else{
+                                    AlertIOS.alert('申请成功请等待');
                                 }
                                 this.props.navigator.popToTop();
                             }.bind(this))
@@ -75,8 +77,7 @@ const PhotoView = React.createClass({
                             this.props.navigator.popToTop();
                         }},
                       ]
-                    )
-                    AlertIOS(json.text);
+                  );
                 }else if(json.status=='1'){
                     AlertIOS.alert(json.text)
                 }else{
@@ -112,7 +113,7 @@ const PhotoView = React.createClass({
 var styles = StyleSheet.create({
     image:{
         flex:1,
-        height: Dimensions.get('window').height-50,
+        height: Dimensions.get('window').height-55,
         width: Dimensions.get('window').width,
         marginRight:10,
         marginTop:20,
@@ -127,19 +128,20 @@ var styles = StyleSheet.create({
         flex: 0,
         backgroundColor: '#fff',
         borderRadius: 15,
-        marginLeft:70,
-        marginRight:70,
+        marginLeft:150,
+        marginRight:150,
         //color: 'pink',
         padding: 10,
         marginTop:4,
-        marginBottom:50,
-        backgroundColor:'#d6e9c6',
+        marginBottom:55,
+        backgroundColor:'#FE433C',
         justifyContent:'center',
     },
     text:{
         textAlign:'center',
-        fontSize:24,
-        color:'black'
+        fontSize:20,
+        color:'white',
+        fontWeight:'bold',
     }
 });
 module.exports=PhotoView;

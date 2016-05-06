@@ -11,7 +11,7 @@ var {
   Dimensions,
   TouchableOpacity
 } = React;
-console.log(require('image!icon_tabbar_homepage_selected'));
+//console.log(require('image!icon_tabbar_homepage_selected'));
 
 import Camera from 'react-native-camera';
 import Location from './Location';
@@ -26,30 +26,11 @@ var Sign = React.createClass({
   },
   render: function(){
     return(
-      <View>
         <View style={styles.container}>
-           <Camera
-             ref={(cam) => {
-               this.camera = cam;
-             }}
-             style={styles.preview}
-             captureTarget={Camera.constants.CaptureTarget.disk}
-             aspect={Camera.constants.Aspect.fit}>
-                <TouchableOpacity style={styles.capture}>
-                    <Text style={styles.btn} onPress={this.takePicture}>点击拍照</Text>
-                </TouchableOpacity>
-           </Camera>
+           <Text>什么也没有</Text>
         </View>
-      </View>
     )
   },
-  takePicture() {
-    this.camera.capture()
-      .then((data) => {
-          console.log(data);
-      })
-      .catch(err => console.error(err));
-  }
 });
 
 

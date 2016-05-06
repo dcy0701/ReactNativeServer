@@ -22,6 +22,8 @@ import config from './config';
 
 import Location from './Location';
 
+import Login from './Login';
+
 console.log('config');
 
 var log = console.log;
@@ -59,7 +61,7 @@ var ReactNativeServer = React.createClass({
       ()=> {
         this.setState({splashed:false});
         //console.log(this.state);
-      },2000
+    },100
     );
     //异步任务去AsyncStroge中拿取 登录状态
     // 对于登录状态，暂时保存7天  如果不记住密码 保存30天 是有一个范围 TODO
@@ -81,8 +83,8 @@ var ReactNativeServer = React.createClass({
 
 
       //mock data   ***************************************************
-      error = 1;
-      result = 'dcy$dcy0701'
+    //   error = 1;
+    //   result = 'dcy$dcy0701';
 
 
       //************************************************************
@@ -135,11 +137,7 @@ var ReactNativeServer = React.createClass({
       );
     }else if(this.state.login==2||this.state.login==0){
       return (
-        <View style={styles.container}>
-          <Text style={styles.welcome}>
-            需要前往没有做出来的登录页面
-          </Text>
-        </View>
+          <Login status={this.state.login}/>
         //这里是 登录页面 TODO
       )
     }else if(this.state.login==3){
