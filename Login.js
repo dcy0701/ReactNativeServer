@@ -51,7 +51,8 @@ var Login = React.createClass({
               console.log(err);
             });
             if(this.state.memorize==true){
-              let val = this.state.username+'$'+this.state.pass;
+              let expires = new Date().getTime();
+              let val = this.state.username+'$'+this.state.pass+'$'+expires;
               //TODO 考虑加上时长
               AsyncStorage.setItem('loginStatus',val,function(err){
                 console.log(err);
@@ -78,6 +79,14 @@ var Login = React.createClass({
     this.setState({
       memorize:val
     });
+  },
+  logout(){
+    AsyncStorage.removeItem('loginStatus',function(err){
+      console.log(err);
+    }).then(function(){
+      console.log('！！！！调用了退出，传递给了index');
+      this.setState({status:0});
+    }.bind(this));
   },
   render: function(){
       if(this.state.status==2||this.state.status==0){
@@ -139,7 +148,7 @@ var Login = React.createClass({
       }else if(this.state.status==3){
         // 这里是导航页面  TODO
         return(
-          <Home />
+          <Home logout={this.logout} />
         )
       }
     },

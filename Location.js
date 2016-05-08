@@ -196,8 +196,8 @@ var Location = React.createClass({
             showsUserLocation={true}
             region={{latitude: parseFloat(this.state.latitude),
                     longitude: parseFloat(this.state.longitude),
-                    latitudeDelta: 0.05,
-                    longitudeDelta: 0.05}}
+                    latitudeDelta: 0.01,
+                    longitudeDelta: 0.01}}
             style={styles.map}
           />
         <View style={styles.text}>

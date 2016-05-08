@@ -16,6 +16,8 @@ var {
 import Camera from 'react-native-camera';
 import Location from './Location';
 
+import My from './my';
+import Recent from './Recent';
 // console.log(require('image!icon_tabbar_homepage_selected'));
 
 var Sign = React.createClass({
@@ -44,6 +46,9 @@ var Home = React.createClass({
     this.setState({
       selectedTab:tabName
     });
+  },
+  componentDidMount(){
+    console.log(this.props.logout);
   },
   render: function() {
     return (
@@ -79,29 +84,31 @@ var Home = React.createClass({
         </TabBarIOS.Item>
 
         <TabBarIOS.Item
-          title = "个人中心"
+          title = "签到记录"
+          icon = {require('image!icon_tabbar_misc')}
+          onPress = {()=> this.changeTab('more')}
+          selected = { this.state.selectedTab === 'more'}>
+          <NavigatorIOS
+
+            style={styles.container}
+            initialRoute={{
+              title: '签到记录',
+              component: Recent,
+            }}
+          />
+        </TabBarIOS.Item>
+
+        <TabBarIOS.Item
+          title = "我"
           icon = {require('image!icon_tabbar_mine')}
           onPress = {()=> this.changeTab('usercenter')}
           selected = { this.state.selectedTab === 'usercenter'}>
           <NavigatorIOS
             style={styles.container}
             initialRoute={{
-              title: '个人中心',
-              component: Sign,
-            }}
-          />
-        </TabBarIOS.Item>
-
-        <TabBarIOS.Item
-          title = "更多"
-          icon = {require('image!icon_tabbar_misc')}
-          onPress = {()=> this.changeTab('more')}
-          selected = { this.state.selectedTab === 'more'}>
-          <NavigatorIOS
-            style={styles.container}
-            initialRoute={{
-              title: '更多',
-              component: Sign
+              title: '我',
+              component: My,
+              passProps: {logout: this.props.logout},
             }}
           />
         </TabBarIOS.Item>

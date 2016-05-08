@@ -2,7 +2,9 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  */
-
+// 我需要 退出登录按钮回到主菜单！！！！
+// 所以。。 我需要双向数据流
+// 我想错了，还是通过传递 方法比较好
 import React, {
   AppRegistry,
   Component,
@@ -61,7 +63,7 @@ var ReactNativeServer = React.createClass({
       ()=> {
         this.setState({splashed:false});
         //console.log(this.state);
-    },100
+    },20
     );
     //异步任务去AsyncStroge中拿取 登录状态
     // 对于登录状态，暂时保存7天  如果不记住密码 保存30天 是有一个范围 TODO
@@ -101,7 +103,12 @@ var ReactNativeServer = React.createClass({
       console.log(result);
       var username = result.split('$')[0];
       var password = result.split('$')[1];
-
+      var expires = result.split('$')[2];
+      // 判断登录信息是否过期。
+      if (new Date().getTime()-604800000 > expires) {
+        this.setState({login:0});
+        return;
+      }
       var fetch_url = config.API.LOGIN_API+'?user='+username+'&pass='+password;
 
       console.log('fetch:'+fetch_url);
@@ -129,6 +136,14 @@ var ReactNativeServer = React.createClass({
         }.bind(this));
     }.bind(this));
   },
+  logout(){
+    AsyncStorage.removeItem('loginStatus',function(err){
+      console.log(err);
+    }).then(function(){
+      console.log('！！！！调用了退出，传递给了index');
+      this.setState({login:0});
+    }.bind(this));
+  },
   render: function() {
     if (this.state.splashed||this.state.login==1) {
       return (
@@ -143,7 +158,7 @@ var ReactNativeServer = React.createClass({
     }else if(this.state.login==3){
       // 这里是导航页面  TODO
       return(
-        <Home />
+        <Home logout={this.logout} test='test'/>
       )
 
     }
