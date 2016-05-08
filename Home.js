@@ -70,20 +70,6 @@ var Home = React.createClass({
         </TabBarIOS.Item>
 
         <TabBarIOS.Item
-          title = "主页"
-          icon = {require('image!icon_tabbar_onsite')}
-          onPress = {()=> this.changeTab('home')}
-          selected = { this.state.selectedTab === 'home'}>
-          <NavigatorIOS
-            style={styles.container}
-            initialRoute={{
-              title: '主页',
-              component: Sign,
-            }}
-          />
-        </TabBarIOS.Item>
-
-        <TabBarIOS.Item
           title = "签到记录"
           icon = {require('image!icon_tabbar_misc')}
           onPress = {()=> this.changeTab('more')}
@@ -94,6 +80,20 @@ var Home = React.createClass({
             initialRoute={{
               title: '签到记录',
               component: Recent,
+            }}
+          />
+        </TabBarIOS.Item>
+
+        <TabBarIOS.Item
+          title = "进度"
+          icon = {require('image!icon_tabbar_onsite')}
+          onPress = {()=> this.changeTab('home')}
+          selected = { this.state.selectedTab === 'home'}>
+          <NavigatorIOS
+            style={styles.container}
+            initialRoute={{
+              title: '进度',
+              component: Sign,
             }}
           />
         </TabBarIOS.Item>

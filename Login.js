@@ -14,6 +14,7 @@ var {
   TextInput,
   TouchableHighlight,
   Switch,
+  PixelRatio
 } = React;
 
 import Home from './Home';
@@ -92,55 +93,53 @@ var Login = React.createClass({
       if(this.state.status==2||this.state.status==0){
         return (
           <View style={styles.container}>
-            <View>
-              {this.state.status===2? <Text>密码错误请重新登录</Text>:<Text>'开始登录'</Text>}
+            <View style={styles.tips}>
+              {this.state.status===2? <Text style={styles.tiptext}>密码错误请重新登录</Text>:<Text style={styles.tiptext}>开始登录</Text>}
             </View>
-            <View>
-                <Text style={[styles.subTitle,styles.minSpaceLeft]}>
+            <View style={styles.pass}>
+                <Text style={[styles.subTitle]}>
                   用户名
                 </Text>
                 <View style={[styles.maxSpaceLeft]} value={this.state.username}>
                     <TextInput
                       autoCapitalize = 'none'
-                      style={{height: 60,width:160}}
+                      style={styles.input}
                       placeholder = '请输入用户名'
                       //autoFocus={true}
                       value={this.state.username}
                       onChangeText={this.getValue}
                       />
                 </View>
-                <Text>
-                  {this.state.username}
-                </Text>
             </View>
-            <View>
-                <Text style={[styles.subTitle,styles.minSpaceLeft]}>
-                  用户名
+            <View style={styles.pass}>
+                <Text style={[styles.subTitle]}>
+                  密码
                 </Text>
                 <View style={[styles.maxSpaceLeft]}>
                     <TextInput
                       autoCapitalize = 'none'
-                      style={{height: 60,width:160}}
                       password={true}
                       placeholder = '请输入密码'
+                      style={styles.input}
                       value={this.state.pass}
                       onChangeText={this.getPass}
                       />
                 </View>
             </View>
 
-            <View style={{flex:1,width:300}}>
-              <TouchableHighlight onPress={this.login}>
-                  <Text style={{flex:0,height:40,position:'absolute',left:12,right:12,top:12,color:'white',fontWeight:'bold',backgroundColor:'#4cc0e0',textAlign:'center',paddingTop:10,borderRadius:20}}>
-                    登录
-                  </Text>
-              </TouchableHighlight>
+            <View style={{flex:5,width:300,alignItems:'flex-end'}}>
               <View style={styles.memo}>
                   <Switch value={this.state.memorize}
                           onValueChange={(value) => this.setState({memorize: value})}
                         />
                   <Text>记住密码</Text>
               </View>
+              <TouchableHighlight onPress={this.login}>
+                  <Text style={styles.login}>
+                    登录
+                  </Text>
+              </TouchableHighlight>
+
             </View>
 
           </View>
@@ -154,12 +153,64 @@ var Login = React.createClass({
     },
 });
 var styles = StyleSheet.create({
+    login:{
+      left:-200,
+      position:'absolute',
+      fontSize:18,
+      bottom:140,
+      flex:5,
+      height:40,
+      width:200,
+      color:'white',
+      borderRadius:20,
+      fontWeight:'bold',
+      backgroundColor:'#4cc0e1',
+      textAlign:'center',
+      paddingTop:10
+    },
+    input:{
+      fontSize:18,
+      height:40,
+      borderWidth:1,
+      borderColor:'#ccc',
+      borderRadius:6,
+      marginLeft:5,
+      width:200,
+      paddingLeft:15
+    },
+    subTitle:{
+      fontSize:18,
+      width:80
+    },
+    user:{
+      flex:1,
+      flexDirection:'row',
+      justifyContent:'center',
+      alignItems:'center'
+    },
+    pass:{
+      flex:1,
+      justifyContent:'center',
+      flexDirection:'row',
+      alignItems:'center'
+    },
     container:{
         flex:1,
         padding:20
     },
     memo:{
         top:60,
+        flex:1,
+        marginRight:0
+    },
+    tiptext:{
+      paddingTop:20,
+      fontSize:20,
+      color:'gray',
+      textAlign:'center'
+    },
+    tips:{
+      paddingBottom:100
     }
 });
 
