@@ -63,7 +63,7 @@ var ReactNativeServer = React.createClass({
       ()=> {
         this.setState({splashed:false});
         //console.log(this.state);
-    },20
+    },2000
     );
     //异步任务去AsyncStroge中拿取 登录状态
     // 对于登录状态，暂时保存7天  如果不记住密码 保存30天 是有一个范围 TODO

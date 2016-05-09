@@ -76,9 +76,10 @@ var Modify = React.createClass({
   render: function(){
     return(
       <View style={styles.container2}>
+        <Icon style={{left:150,paddingBottom:60,paddingTop:20}} name="tripadvisor" size={80} color="rgb(192,194,198)" />
         <View style={styles.pass}>
             <Text style={[styles.subTitle]}>
-              原始密码
+              <Icon name="history" size={20} color="rgb(192,194,198)" /> 原密码
             </Text>
             <View style={[styles.maxSpaceLeft]} value={this.state.username}>
                 <TextInput
@@ -94,7 +95,7 @@ var Modify = React.createClass({
         </View>
         <View style={styles.pass}>
             <Text style={[styles.subTitle]}>
-              新密码
+              <Icon name="smile-o" size={20} color="rgb(192,194,198)" /> 新密码
             </Text>
             <View style={[styles.maxSpaceLeft]}>
                 <TextInput
@@ -148,6 +149,9 @@ var My = React.createClass({
     this.props.navigator.push({
       component:Modify,
       title:'修改密码',
+      barTintColor:'rgb(42,52,63)',
+      titleTextColor:'#4F8EF7',
+      translucent:true,
       passProps:{
         user:this.state.user,
         logout:this.props.logout
@@ -169,26 +173,27 @@ var My = React.createClass({
         <View style={styles.container}>
           <View style={styles.listView}>
             <View style={styles.user}>
-              <Text style={{fontSize:18,}}>  <Icon name="user" size={20} color="#4F8EF7" />    当前用户:      {this.state.user}</Text>
-              <Text style={{fontSize:18,right:0}}>  <Icon name="angle-right" size={20} color="#858585" />  </Text>
+              <Text style={{fontSize:18,color:'rgb(39,217,179)'}}>  <Icon name="user" size={20} color="#4F8EF7" />    当前用户:      {this.state.user}</Text>
+              <Text style={{fontSize:18,right:0,color:'rgb(39,217,179)'}}>  <Icon name="angle-right" size={20} color="#858585" />  </Text>
             </View>
             <View style={styles.user}>
-              <Text style={{fontSize:18,}}>  <Icon name="location-arrow" size={20} color="#4F8EF7" />    所属区域:       {this.state.area}</Text>
-              <Text style={{fontSize:18,right:0}}>  <Icon name="angle-right" size={20} color="#858585" />  </Text>
+              <Text style={{fontSize:18,color:'rgb(39,217,179)'}}>  <Icon name="location-arrow" size={20} color="#4F8EF7" />    所属区域:       {this.state.area}</Text>
+              <Text style={{fontSize:18,right:0,color:'rgb(39,217,179)'}}>  <Icon name="angle-right" size={20} color="#858585" />  </Text>
             </View>
             <View style={styles.user}>
-              <Text style={{fontSize:18,}}>  <Icon name="hourglass-start" size={20} color="#4F8EF7" />    用户权限:       {this.state.power}</Text>
-              <Text style={{fontSize:18,right:0}}>  <Icon name="angle-right" size={20} color="#858585" />  </Text>
+              <Text style={{fontSize:18,color:'rgb(39,217,179)'}}>  <Icon name="hourglass-start" size={20} color="#4F8EF7" />    用户权限:       {this.state.power}</Text>
+              <Text style={{fontSize:18,right:0,color:'rgb(39,217,179)'}}>  <Icon name="angle-right" size={20} color="#858585" />  </Text>
             </View>
             <View style={styles.user}>
-              <Text style={{fontSize:18,}}>  <Icon name="wifi" size={20} color="#4F8EF7" />   当前网络:       {this.state.netInfo}</Text>
-              <Text style={{fontSize:18,right:0}}>  <Icon name="angle-right" size={20} color="#858585" />  </Text>
+              <Text style={{fontSize:18,color:'rgb(39,217,179)'}}>  <Icon name="wifi" size={20} color="#4F8EF7" />   当前网络:       {this.state.netInfo}</Text>
+              <Text style={{fontSize:18,right:0,color:'rgb(39,217,179)'}}>  <Icon name="angle-right" size={20} color="#858585" />  </Text>
             </View>
             <View style={styles.user}>
-              <Text style={{fontSize:18,}}>  <Icon name="qq" size={20} color="#4F8EF7" />   关于作者:       byr.pub</Text>
-              <Text style={{fontSize:18,right:0}}>  <Icon name="angle-right" size={20} color="#858585" />  </Text>
+              <Text style={{fontSize:18,color:'rgb(39,217,179)'}}>  <Icon name="qq" size={20} color="#4F8EF7" />   关于作者:       byr.pub</Text>
+              <Text style={{fontSize:18,right:0,color:'rgb(39,217,179)'}}>  <Icon name="angle-right" size={20} color="#858585" />  </Text>
             </View>
           </View>
+          <Icon style={{top:110}}name="pagelines" size={80} color="#4F8EF7" />
           <View style={styles.ccc}>
             <TouchableOpacity
               onPress={this.logout}>
@@ -226,7 +231,8 @@ var styles = StyleSheet.create({
   container:{
     flex:1,
     flexDirection:'column',//主轴方向
-    alignItems:'center'
+    alignItems:'center',
+    backgroundColor:'rgb(42,52,63)'
   },
   text:{
     fontSize:12,
@@ -283,7 +289,7 @@ var styles = StyleSheet.create({
     color:'white',
     borderRadius:20,
     fontWeight:'bold',
-    backgroundColor:'#FE433C',
+    backgroundColor:'rgb(39,217,179)',
     textAlign:'center',
     paddingTop:10
   },
@@ -299,7 +305,8 @@ var styles = StyleSheet.create({
   },
   subTitle:{
     fontSize:18,
-    width:80
+    width:80,
+    color:'rgb(39,217,179)'
   },
   pass:{
     flex:1,
@@ -309,7 +316,8 @@ var styles = StyleSheet.create({
   },
   container2:{
       flex:1,
-      paddingTop:150
+      paddingTop:150,
+      backgroundColor:'rgb(42,52,63)'
   },
   memo:{
       top:60,

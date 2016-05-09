@@ -19,6 +19,7 @@ var {
 
 import Home from './Home';
 import config from './config';
+var Icon = require('react-native-vector-icons/FontAwesome');
 
 var Login = React.createClass({
   getInitialState(){
@@ -96,11 +97,12 @@ var Login = React.createClass({
             <View style={styles.tips}>
               {this.state.status===2? <Text style={styles.tiptext}>密码错误请重新登录</Text>:<Text style={styles.tiptext}>开始登录</Text>}
             </View>
+            <Icon style={{left:150,paddingBottom:60,paddingTop:20}} name="vimeo" size={80} color="rgb(192,194,198)" />
             <View style={styles.pass}>
                 <Text style={[styles.subTitle]}>
-                  用户名
+                  <Icon name="user" size={20} color="rgb(192,194,198)" />  用户名
                 </Text>
-                <View style={[styles.maxSpaceLeft]} value={this.state.username}>
+                <View style={[styles.maxSpaceLeft]}>
                     <TextInput
                       autoCapitalize = 'none'
                       style={styles.input}
@@ -113,7 +115,7 @@ var Login = React.createClass({
             </View>
             <View style={styles.pass}>
                 <Text style={[styles.subTitle]}>
-                  密码
+                  <Icon name="user-secret" size={20} color="rgb(192,194,198)" />  密码
                 </Text>
                 <View style={[styles.maxSpaceLeft]}>
                     <TextInput
@@ -132,7 +134,7 @@ var Login = React.createClass({
                   <Switch value={this.state.memorize}
                           onValueChange={(value) => this.setState({memorize: value})}
                         />
-                  <Text>记住密码</Text>
+                  <Text style={{color:'rgb(39,217,179)',}}>记住密码</Text>
               </View>
               <TouchableHighlight onPress={this.login}>
                   <Text style={styles.login}>
@@ -157,14 +159,14 @@ var styles = StyleSheet.create({
       left:-200,
       position:'absolute',
       fontSize:18,
-      bottom:140,
+      bottom:120,
       flex:5,
       height:40,
       width:200,
       color:'white',
       borderRadius:20,
       fontWeight:'bold',
-      backgroundColor:'#4cc0e1',
+      backgroundColor:'rgb(39,217,179)',
       textAlign:'center',
       paddingTop:10
     },
@@ -172,6 +174,7 @@ var styles = StyleSheet.create({
       fontSize:18,
       height:40,
       borderWidth:1,
+      color:'rgb(39,217,179)',
       borderColor:'#ccc',
       borderRadius:6,
       marginLeft:5,
@@ -180,7 +183,8 @@ var styles = StyleSheet.create({
     },
     subTitle:{
       fontSize:18,
-      width:80
+      width:80,
+      color:'rgb(39,217,179)'
     },
     user:{
       flex:1,
@@ -196,7 +200,8 @@ var styles = StyleSheet.create({
     },
     container:{
         flex:1,
-        padding:20
+        padding:20,
+        backgroundColor:'rgb(42,52,63)'
     },
     memo:{
         top:60,
@@ -210,7 +215,10 @@ var styles = StyleSheet.create({
       textAlign:'center'
     },
     tips:{
-      paddingBottom:100
+      paddingBottom:20
+    },
+    maxSpaceLeft:{
+
     }
 });
 

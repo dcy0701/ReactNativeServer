@@ -63,7 +63,10 @@ var Home = React.createClass({
             style={styles.container}
             initialRoute={{
               title: '签到',
+              barTintColor:'rgb(42,52,63)',
+              titleTextColor:'#4F8EF7',
               component: Location,
+              translucent:true,
               rightButtonIcon: require('image!icon_tabbar_onsite_selected'),
             }}
           />
@@ -79,6 +82,9 @@ var Home = React.createClass({
             style={styles.container}
             initialRoute={{
               title: '签到记录',
+              barTintColor:'rgb(42,52,63)',
+              titleTextColor:'#4F8EF7',
+              translucent:true,
               component: Recent,
             }}
           />
@@ -93,6 +99,9 @@ var Home = React.createClass({
             style={styles.container}
             initialRoute={{
               title: '进度',
+              barTintColor:'rgb(42,52,63)',
+              titleTextColor:'#4F8EF7',
+              translucent:true,
               component: Sign,
             }}
           />
@@ -108,6 +117,9 @@ var Home = React.createClass({
             initialRoute={{
               title: '我',
               component: My,
+              barTintColor:'rgb(42,52,63)',
+              titleTextColor:'#4F8EF7',
+              translucent:true,
               passProps: {logout: this.props.logout},
             }}
           />

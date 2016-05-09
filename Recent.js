@@ -24,7 +24,7 @@ console.log('进入最近签到记录');
 import {API} from './config';
 
 var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-
+var Icon = require('react-native-vector-icons/FontAwesome');
 
 // rowHasChanged是 react组件纪录 state 是否更新的一个方法，你修改 等于和不等于并不影响你第一次显示，影响的是你state变化以后的显示情况。
 // 如果是等于，state变化 页面不更新 , state不变，才更新（一般不用）。不等于就是 state变化 页面立即更新。
@@ -72,7 +72,7 @@ var Recent = React.createClass({
     return (
       <View style={styles.container}>
         <Text>
-          Loading records...
+          <Icon name="hourglass-half" size={80} color="#4F8EF7" />
         </Text>
       </View>
     );
@@ -111,7 +111,7 @@ var Recent = React.createClass({
             refreshing={this.state.isRefreshing}
             onRefresh={this._onRefresh}
             tintColor="#ff0000"
-            title="pink是代签哦"
+            title="深色是代签哦"
             colors={['#ff0000', '#00ff00', '#0000ff']}
             progressBackgroundColor="#ffff00"
           />
@@ -127,7 +127,8 @@ var Recent = React.createClass({
 });
 var styles = StyleSheet.create({
   scrollView:{
-    top:44
+    top:44,
+    backgroundColor:'rgb(42,52,63)'
   },
   container1:{
     flex: 1,
@@ -140,12 +141,12 @@ var styles = StyleSheet.create({
   },
   container: {
     borderBottomWidth:1/PixelRatio.get(),
-    borderColor:'#CCCCCC',
+    borderColor:'black',
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'pink',
+    backgroundColor: 'rgb(42,52,63)',
   },
   rightContainer: {
     flex: 1,
@@ -154,9 +155,11 @@ var styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 8,
     textAlign: 'center',
+    color:'rgb(39,217,179)'
   },
   year: {
     textAlign: 'center',
+    color:'rgb(39,217,179)'
   },
   thumbnail: {
     bottom:0,
@@ -165,7 +168,7 @@ var styles = StyleSheet.create({
   },
   listView: {
     paddingTop: 20,
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'rgb(42,52,63)',
   },
 });
 

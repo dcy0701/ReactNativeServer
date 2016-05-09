@@ -15,6 +15,7 @@ import React,{
 } from 'react-native';
 
 import {API} from './config';
+var Icon = require('react-native-vector-icons/FontAwesome');
 
 const PhotoView = React.createClass({
     getInitialState(){
@@ -101,7 +102,7 @@ const PhotoView = React.createClass({
                 />
                 <TouchableOpacity style={styles.sign} onPress={this.sign}>
                     <Text style={styles.text} onPress={this.sign}>
-                        确认签到
+                        <Icon name="forumbee" size={20} color="white" /> 签到
                     </Text>
                 </TouchableOpacity>
 
@@ -122,7 +123,7 @@ var styles = StyleSheet.create({
     },
     container:{
         flex:1,
-        backgroundColor:'white',
+        backgroundColor:'rgb(42,52,63)'
     },
     sign:{
         flex: 0,
@@ -134,7 +135,7 @@ var styles = StyleSheet.create({
         padding: 10,
         marginTop:4,
         marginBottom:55,
-        backgroundColor:'#FE433C',
+        backgroundColor:'rgb(39,217,179)',
         justifyContent:'center',
     },
     text:{

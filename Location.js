@@ -25,6 +25,7 @@ var PickerItemIOS = PickerIOS.Item;
 import {API,MAP_API} from './config';
 import Sign from './camera';
 
+var Icon = require('react-native-vector-icons/FontAwesome');
 var UPDATE_API = API.UPDATE_API;
 var LOCATION_API = API.LOCATION_API;
 var UPDATECHAGEMENT_API = API.UPDATECHAGEMENT_API;
@@ -149,15 +150,15 @@ var Location = React.createClass({
     //二级联动  默认都是0 0
     //数组
     return(
-        <ScrollView  style={{flex:1}}>
+        <ScrollView  style={{flex:1,backgroundColor:'rgb(42,52,63)'}}>
           <View style={styles.picker_contain}>
             <View style={styles.picker1}>
-              <Text style={{fontSize:22,color:'#FE433C',textAlign:'center',padding:0}}>
+              <Text style={{fontSize:22,color:'rgb(39,217,179)',textAlign:'center',padding:0}}>
                 父工程号
               </Text>
               <PickerIOS
                 selectedValue={this.state.selectedProject}
-                itemStyle={{fontSize: 16, color: '#FE433C', textAlign: 'center', fontWeight: 'bold'}}
+                itemStyle={{fontSize: 16,color:'rgb(39,217,179)', textAlign: 'center', fontWeight: 'bold'}}
                 onValueChange={(Project_id) => {
                     this.setState({ selectedProject: Project_id});
                     //XXX  FIXME  TODO 这句话很重要
@@ -174,12 +175,12 @@ var Location = React.createClass({
               </PickerIOS>
             </View>
             <View style={styles.picker2}>
-              <Text style={{fontSize:22,color:'#FE433C',textAlign:'center',padding:0}}>
+              <Text style={{fontSize:22,color:'rgb(39,217,179)',textAlign:'center',padding:0}}>
                 子工程号
               </Text>
               <PickerIOS
                   selectedValue={this.state.sonProjectIndex}
-                  itemStyle={{fontSize: 16, color: '#FE433C', textAlign: 'center', fontWeight: 'bold'}}
+                  itemStyle={{fontSize: 16, color:'rgb(39,217,179)', textAlign: 'center', fontWeight: 'bold'}}
                   // key={this.state.carMake}
                   onValueChange={(value) => this.setState({sonProjectIndex:value})}>
                   {select_son_arr.map((value) => (
@@ -201,13 +202,13 @@ var Location = React.createClass({
             style={styles.map}
           />
         <View style={styles.text}>
-          <Text style={styles.textview}>经度: {this.state.longitude}</Text>
-          <Text style={styles.textview}>纬度: {this.state.latitude}</Text>
-          <Text style={styles.textview}>详细位置是: {this.state.detailPositon}</Text>
+          <Text style={styles.textview}><Icon name="location-arrow" size={20} color="rgb(39,217,179)" /> 经度: {this.state.longitude}</Text>
+          <Text style={styles.textview}><Icon name="history" size={20} color="rgb(39,217,179)" /> 纬度: {this.state.latitude}</Text>
+          <Text style={styles.textview}><Icon name="info-circle" size={20} color="rgb(39,217,179)" /> 详细位置是: {this.state.detailPositon}</Text>
         </View>
         <View style={{flex:1,justifyContent:'center',width:200,marginLeft:100}}>
           <TouchableOpacity onPress={this.sign}>
-            <Text style={{top:-170,color:'white',backgroundColor:'#FE433C',fontSize:24,textAlign:'center',borderRadius:15,padding:10}}>立即签到</Text>
+            <Text style={{top:-200,color:'white',backgroundColor:'rgb(39,217,179)',fontSize:24,textAlign:'center',borderRadius:15,padding:10}}>立即签到</Text>
           </TouchableOpacity>
         </View>
         </ScrollView>
@@ -229,7 +230,7 @@ var Location = React.createClass({
 
 var styles = StyleSheet.create({
   map:{
-    top:-250,
+    top:-270,
     height: 180,
     margin: 10,
     borderWidth: 1,
@@ -259,11 +260,13 @@ var styles = StyleSheet.create({
     top: -238.5
   },
   container:{
-    flex:1
+    flex:1,
+    backgroundColor:'rgb(42,52,63)'
   },
   textview:{
+    paddingTop:5,
     fontSize:15,
-    color: 'gray'
+    color:'rgb(39,217,179)'
   }
 });
 
