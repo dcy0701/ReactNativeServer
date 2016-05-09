@@ -57,9 +57,8 @@ var ReactNativeServer = React.createClass({
     }
   },
   componentDidMount:function(){
-    console.log('主页加载完了！！！');
     var that = this;
-    this.setTimeout(//清理计时器 需要加入mixin TODO
+    this.setTimeout(//清理计时器 需要加入mixin FIXME 
       ()=> {
         this.setState({splashed:false});
         //console.log(this.state);
