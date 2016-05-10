@@ -16,12 +16,15 @@ var {
   Switch,
   NetInfo,
   AlertIOS,
-  PixelRatio
+  PixelRatio,
+  Animated,
+  Easing
 } = React;
 
 import {API} from './config';
 
 var Icon = require('react-native-vector-icons/FontAwesome');
+import TimerMixin from 'react-timer-mixin';
 
 var Modify = React.createClass({
   getInitialState(){
@@ -130,9 +133,23 @@ var My = React.createClass({
       area:'',
       power:'',
       netInfo:'',
+      fadeInOpacity: new Animated.Value(0)
     }
   },
   componentDidMount(){
+    Animated.timing(this.state.fadeInOpacity, {
+            toValue: 1, // 目标值
+            duration: 5000, // 动画时间
+            easing: Easing.linear // 缓动函数
+        }).start();
+    setInterval(function(){
+      this.setState({fadeInOpacity: new Animated.Value(0)});
+      Animated.timing(this.state.fadeInOpacity, {
+              toValue: 1, // 目标值
+              duration: 2500, // 动画时间
+              easing: Easing.linear // 缓动函数
+          }).start();
+    }.bind(this),5000)
     //console.log(this.props.logout);
     NetInfo.fetch().done(function(reach){
       this.setState({netInfo:reach});
@@ -146,6 +163,7 @@ var My = React.createClass({
     }.bind(this));
   },
   modify(){
+    console.log(this.state.fadeInOpacity)
     this.props.navigator.push({
       component:Modify,
       title:'修改密码',
@@ -193,7 +211,11 @@ var My = React.createClass({
               <Text style={{fontSize:18,right:0,color:'rgb(39,217,179)'}}>  <Icon name="angle-right" size={20} color="#858585" />  </Text>
             </View>
           </View>
-          <Icon style={{top:110}}name="pagelines" size={80} color="#4F8EF7" />
+          <Animated.View style={{top:110,
+                    opacity: this.state.fadeInOpacity
+                }}>
+                <Text style={styles.text}><Icon style={{top:110}} name="pagelines" size={80} color="#4F8EF7" /></Text>
+          </Animated.View>
           <View style={styles.ccc}>
             <TouchableOpacity
               onPress={this.logout}>

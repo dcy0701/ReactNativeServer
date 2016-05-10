@@ -202,9 +202,9 @@ var Location = React.createClass({
             style={styles.map}
           />
         <View style={styles.text}>
-          <Text style={styles.textview}><Icon name="location-arrow" size={20} color="rgb(39,217,179)" /> 经度: {this.state.longitude}</Text>
-          <Text style={styles.textview}><Icon name="history" size={20} color="rgb(39,217,179)" /> 纬度: {this.state.latitude}</Text>
-          <Text style={styles.textview}><Icon name="info-circle" size={20} color="rgb(39,217,179)" /> 详细位置是: {this.state.detailPositon}</Text>
+          <Text style={styles.textview}>   <Icon name="location-arrow" size={20} color="#4F8EF7" />  经度:   {this.state.longitude}</Text>
+          <Text style={styles.textview}>   <Icon name="history" size={20} color="#4F8EF7" />  纬度:   {this.state.latitude}</Text>
+          <Text style={styles.textview}>   <Icon name="info-circle" size={20} color="#4F8EF7" />  详细位置是:   {this.state.detailPositon}</Text>
         </View>
         <View style={{flex:1,justifyContent:'center',width:200,marginLeft:100}}>
           <TouchableOpacity onPress={this.sign}>

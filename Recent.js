@@ -17,7 +17,9 @@ var {
   ListView,
   RefreshControl,
   Image,
-  PixelRatio
+  PixelRatio,
+  Animated,
+  Easing,
 } = React;
 console.log('进入最近签到记录');
 
@@ -36,10 +38,22 @@ var Recent = React.createClass({
       isRefreshing:false,
       dataSource:ds,
       loaded:false,
-      url:''
+      url:'',
+      fadeInOpacity: new Animated.Value(0),
+      rotation: new Animated.Value(0),
+      fontSize: new Animated.Value(0)
     }
   },
   componentDidMount(){
+    var timing = Animated.timing;
+    Animated.parallel(['fadeInOpacity', 'rotation', 'fontSize'].map(property => {
+                return timing(this.state[property], {
+                toValue: 1,
+                duration: 1000,
+                easing: Easing.linear
+            });
+        })).start();
+
     AsyncStorage.getItem('user_meta',function(error,result){
       result = JSON.parse(result);
       console.log(result);
@@ -71,11 +85,34 @@ var Recent = React.createClass({
   renderLoadingView(){
     return (
       <View style={styles.container}>
-        <Text>
-          <Icon name="hourglass-half" size={80} color="#4F8EF7" />
-        </Text>
+          <Animated.View style={[styles.demo, {
+                opacity: this.state.fadeInOpacity,
+                    transform: [{
+                        rotateZ: this.state.rotation.interpolate({
+                            inputRange: [0,1],
+                            outputRange: ['0deg', '360deg']
+                        })
+                    }]
+                }]}>
+            <Animated.Text style={{
+                          fontSize: this.state.fontSize.interpolate({
+                              inputRange: [0,1],
+                              outputRange: [12,26]
+                          })
+                  }}>
+                <Icon name="hourglass-half" size={60} color="#4F8EF7" />
+            </Animated.Text>
+        </Animated.View>
       </View>
     );
+
+    // return (
+    //   <View style={styles.container}>
+    //     <Text>
+    //       <Icon name="hourglass-half" size={80} color="#4F8EF7" />
+    //     </Text>
+    //   </View>
+    // );
   },
   renderRow(data){
     // console.log('./../server/'+data.photo_url);
