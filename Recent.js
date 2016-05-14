@@ -125,7 +125,7 @@ var Recent = React.createClass({
     return (
     <View style={data.flag===1?styles.container:styles.container1}>
       <Image
-        source={{uri:'/Users/cy/Desktop/server/myapp/server/'+data.photo_url}}
+        source={{uri:API.URI+data.photo_url.slice(9)}}
         //TODO FIXME XXX 访问静态资源！！！！！！
         style={styles.thumbnail}
         />
