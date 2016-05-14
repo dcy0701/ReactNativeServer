@@ -139,17 +139,10 @@ var My = React.createClass({
   componentDidMount(){
     Animated.timing(this.state.fadeInOpacity, {
             toValue: 1, // 目标值
-            duration: 5000, // 动画时间
+            duration: 8000, // 动画时间
             easing: Easing.linear // 缓动函数
         }).start();
-    setInterval(function(){
-      this.setState({fadeInOpacity: new Animated.Value(0)});
-      Animated.timing(this.state.fadeInOpacity, {
-              toValue: 1, // 目标值
-              duration: 2500, // 动画时间
-              easing: Easing.linear // 缓动函数
-          }).start();
-    }.bind(this),5000)
+
     //console.log(this.props.logout);
     NetInfo.fetch().done(function(reach){
       this.setState({netInfo:reach});

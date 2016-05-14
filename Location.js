@@ -22,7 +22,7 @@ import React,{
 
 var PickerItemIOS = PickerIOS.Item;
 //定位测试
-import {API,MAP_API} from './config';
+import {API,MAP_API,DIFF} from './config';
 import Sign from './camera';
 
 var Icon = require('react-native-vector-icons/FontAwesome');
@@ -121,20 +121,40 @@ var Location = React.createClass({
         sonProjectIndex:this.state.sonProjectIndex
     }
     //此处进行路由跳转
-    this.props.navigator.push({
-        component:Sign,
-        title:'拍照',
-        rightButtonTitle:'放弃拍照',
-        translucent:'true',
-        navigationBarHidden:true,
-        OnRightButtonPress:function(){
-            // 此处放弃拍照 直接签到
-            console.log('此功能暂未开发');
-        },
-        passProps:{
-            passMes:passMes
+    // 此处判断  距离 是否合适
+    // 传递的是工程的名字 以及 。。。。当前的位置
+    var fetch_url = `${API.DISTANCE_API}?project_id=${this.state.sonProjectIndex}&latitude=${this.state.latitude}&longitude=${this.state.longitude}`;
+    console.log('将要进行签到的位置查询'+fetch_url);
+    fetch(fetch_url)
+    .then(function(response){
+        return response.json();
+    }).then(function(json){
+      if(json.status=='ok1'||json.status=='ok'&&parseInt(json.distance)<=DIFF){
+        this.props.navigator.push({
+            component:Sign,
+            title:'拍照',
+            rightButtonTitle:'放弃拍照',
+            translucent:'true',
+            navigationBarHidden:true,
+            OnRightButtonPress:function(){
+                // 此处放弃拍照 直接签到
+                console.log('此功能暂未开发');
+            },
+            passProps:{
+                passMes:passMes
+            }
+        });
+      }else{
+        console.log(json);
+        if(json.distance.message===undefined){
+          AlertIOS.alert(json.distance);
+        }else if(json.distance.status==373){
+          AlertIOS.alert("你的位置与目标位置相差太远");
         }
-    });
+
+      }
+    }.bind(this))
+
 
     // console.log(this.props.navigator);
   },
