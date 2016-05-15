@@ -4,8 +4,7 @@
 *  created by dcy on 2016/4/17
 *  base on react-native
 */
-
-import React,{
+import {
     StyleSheet,
     Text,
     View,
@@ -19,6 +18,8 @@ import React,{
     Dimensions,
     MapView
 } from 'react-native';
+
+import React, { Component } from 'react';
 
 var PickerItemIOS = PickerIOS.Item;
 //定位测试

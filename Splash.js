@@ -1,14 +1,15 @@
 'use strict';
 
-var React = require('react-native');
-var {
+import React from 'react';
+
+import {
   AsyncStorage,
   Image,
   StyleSheet,
   Text,
   View,
   Dimensions,
-} = React;
+} from 'react-native';
 
 var Animated = require('Animated');
 

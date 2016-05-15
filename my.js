@@ -1,7 +1,7 @@
 'use strict';
 
-var React = require('react-native');
-var {
+import React from 'react';
+import {
   StyleSheet,
   Text,
   View,
@@ -19,7 +19,7 @@ var {
   PixelRatio,
   Animated,
   Easing
-} = React;
+} from 'react-native';
 
 import {API} from './config';
 

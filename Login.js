@@ -1,7 +1,7 @@
 'use strict';
 
-var React = require('react-native');
-var {
+import React from 'react';
+import {
   StyleSheet,
   Text,
   View,
@@ -15,7 +15,7 @@ var {
   TouchableHighlight,
   Switch,
   PixelRatio
-} = React;
+} from 'react-native';
 
 import Home from './Home';
 import config from './config';

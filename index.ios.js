@@ -5,16 +5,14 @@
 // 我需要 退出登录按钮回到主菜单！！！！
 // 所以。。 我需要双向数据流
 // 我想错了，还是通过传递 方法比较好
-import React, {
+import {
   AppRegistry,
-  Component,
   StyleSheet,
   Text,
   View,
   AsyncStorage
 } from 'react-native';
-
-
+import React, { Component } from 'react';
 // 第三方库
 
 import Home from './Home';
@@ -58,12 +56,11 @@ var ReactNativeServer = React.createClass({
   },
   componentDidMount:function(){
     var that = this;
-    this.setTimeout(//清理计时器 需要加入mixin FIXME 
+    this.setTimeout(//清理计时器 需要加入mixin FIXME
       ()=> {
         this.setState({splashed:false});
         //console.log(this.state);
-    },2000
-    );
+    },2000);
     //异步任务去AsyncStroge中拿取 登录状态
     // 对于登录状态，暂时保存7天  如果不记住密码 保存30天 是有一个范围 TODO
     // async 约定保存格式 是 user$id:pass XXX

@@ -1,7 +1,7 @@
 'use strict';
 
-var React = require('react-native');
-var {
+import React from 'react';
+import {
   StyleSheet,
   Text,
   View,
@@ -10,7 +10,7 @@ var {
   ScrollView,
   Dimensions,
   TouchableOpacity
-} = React;
+} from 'react-native';
 //console.log(require('image!icon_tabbar_homepage_selected'));
 
 import Camera from 'react-native-camera';

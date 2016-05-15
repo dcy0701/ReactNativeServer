@@ -1,6 +1,6 @@
 'use strict'
 
-import React,{
+import {
     StyleSheet,
     Text,
     View,
@@ -13,6 +13,8 @@ import React,{
     AsyncStorage,
     AlertIOS
 } from 'react-native';
+
+import React from 'react';
 
 import {API} from './config';
 var Icon = require('react-native-vector-icons/FontAwesome');

@@ -1,6 +1,6 @@
 'use strict'
 
-import React,{
+import {
     StyleSheet,
     Text,
     View,
@@ -10,6 +10,8 @@ import React,{
     Dimensions,
     TouchableOpacity
 } from 'react-native';
+
+import React, { Component } from 'react';
 
 console.log('加载拍照组件，开启拍照，跳转至拍照路由');
 
