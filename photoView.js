@@ -36,7 +36,7 @@ const PhotoView = React.createClass({
         //
         let formData = new FormData();
         var project_id = this.props.passMes.sonProjectIndex;
-        formData.append('photo',{uri:this.props.imageUrl,type:'image/jpg',name:'image.jpg'});
+        formData.append('photo',{uri:this.props.imageUrl.path,type:'image/jpg',name:'image.jpg'});
         formData.append('location',this.props.passMes.latitude+'$'+this.props.passMes.longitude);
         formData.append('project_id',project_id);
 
@@ -99,7 +99,7 @@ const PhotoView = React.createClass({
         return (
             <View style={styles.container}>
                 <Image  style={styles.image}
-                        source={{uri:imgurl}}
+                        source={{uri:imgurl.path}}
                         resizeMode='contain'
                 />
                 <TouchableOpacity style={styles.sign} onPress={this.sign}>

@@ -39,7 +39,8 @@ var SplashScreen = React.createClass({
     };
   },
   componentDidMount: function() {
-    this.fetchData();
+    // this.fetchData();
+    // FIXME 去掉更换背景的需求
     this.state.bounceValue.setValue(1);
     Animated.timing(
       this.state.bounceValue,

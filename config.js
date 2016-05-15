@@ -1,7 +1,7 @@
-var dev_host = 'http://localhost';
+var dev_host = 'http://10.205.25.206';
 var host = 'http://121.42.58.11';
 
-var HS = host;
+var HS = dev_host;
 
 module.exports = {
   API:{
