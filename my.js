@@ -184,24 +184,24 @@ var My = React.createClass({
         <View style={styles.container}>
           <View style={styles.listView}>
             <View style={styles.user}>
-              <Text style={{fontSize:18,color:'rgb(39,217,179)'}}>  <Icon name="user" size={20} color="#4F8EF7" />    当前用户:      {this.state.user}</Text>
-              <Text style={{fontSize:18,right:0,color:'rgb(39,217,179)'}}>  <Icon name="angle-right" size={20} color="#858585" />  </Text>
+              <Text style={{fontSize:15,color:'rgb(39,217,179)'}}>  <Icon name="user" size={20} color="#4F8EF7" />    当前用户:      {this.state.user}</Text>
+              <Text style={{fontSize:15,right:0,color:'rgb(39,217,179)'}}>  <Icon name="angle-right" size={20} color="#858585" />  </Text>
             </View>
             <View style={styles.user}>
-              <Text style={{fontSize:18,color:'rgb(39,217,179)'}}>  <Icon name="location-arrow" size={20} color="#4F8EF7" />    所属区域:       {this.state.area}</Text>
-              <Text style={{fontSize:18,right:0,color:'rgb(39,217,179)'}}>  <Icon name="angle-right" size={20} color="#858585" />  </Text>
+              <Text style={{fontSize:15,color:'rgb(39,217,179)'}}>  <Icon name="location-arrow" size={20} color="#4F8EF7" />    所属区域:       {this.state.area}</Text>
+              <Text style={{fontSize:15,right:0,color:'rgb(39,217,179)'}}>  <Icon name="angle-right" size={20} color="#858585" />  </Text>
             </View>
             <View style={styles.user}>
-              <Text style={{fontSize:18,color:'rgb(39,217,179)'}}>  <Icon name="hourglass-start" size={20} color="#4F8EF7" />    用户权限:       {this.state.power}</Text>
-              <Text style={{fontSize:18,right:0,color:'rgb(39,217,179)'}}>  <Icon name="angle-right" size={20} color="#858585" />  </Text>
+              <Text style={{fontSize:15,color:'rgb(39,217,179)'}}>  <Icon name="hourglass-start" size={20} color="#4F8EF7" />    用户权限:       {this.state.power}</Text>
+              <Text style={{fontSize:15,right:0,color:'rgb(39,217,179)'}}>  <Icon name="angle-right" size={20} color="#858585" />  </Text>
             </View>
             <View style={styles.user}>
-              <Text style={{fontSize:18,color:'rgb(39,217,179)'}}>  <Icon name="wifi" size={20} color="#4F8EF7" />   当前网络:       {this.state.netInfo}</Text>
-              <Text style={{fontSize:18,right:0,color:'rgb(39,217,179)'}}>  <Icon name="angle-right" size={20} color="#858585" />  </Text>
+              <Text style={{fontSize:15,color:'rgb(39,217,179)'}}>  <Icon name="wifi" size={20} color="#4F8EF7" />   当前网络:       {this.state.netInfo}</Text>
+              <Text style={{fontSize:15,right:0,color:'rgb(39,217,179)'}}>  <Icon name="angle-right" size={20} color="#858585" />  </Text>
             </View>
             <View style={styles.user}>
-              <Text style={{fontSize:18,color:'rgb(39,217,179)'}}>  <Icon name="qq" size={20} color="#4F8EF7" />   关于作者:       byr.pub</Text>
-              <Text style={{fontSize:18,right:0,color:'rgb(39,217,179)'}}>  <Icon name="angle-right" size={20} color="#858585" />  </Text>
+              <Text style={{fontSize:15,color:'rgb(39,217,179)'}}>  <Icon name="qq" size={20} color="#4F8EF7" />   关于作者:       @dcy</Text>
+              <Text style={{fontSize:15,right:0,color:'rgb(39,217,179)'}}>  <Icon name="angle-right" size={20} color="#858585" />  </Text>
             </View>
           </View>
           <Animated.View style={{top:110,
@@ -267,7 +267,7 @@ var styles = StyleSheet.create({
     position:'absolute',
     color:'white',
     fontWeight:'bold',
-    fontSize:18,
+    fontSize:16,
     width:130,
     height:40,
     bottom:120,
@@ -283,7 +283,7 @@ var styles = StyleSheet.create({
     position:'absolute',
     color:'white',
     fontWeight:'bold',
-    fontSize:18,
+    fontSize:16,
     width:130,
     height:40,
     bottom:120,
@@ -295,7 +295,7 @@ var styles = StyleSheet.create({
   login:{
     left:-200,
     position:'absolute',
-    fontSize:18,
+    fontSize:16,
     // bottom:140,
     top:100,
     flex:5,
@@ -309,7 +309,7 @@ var styles = StyleSheet.create({
     paddingTop:10
   },
   input:{
-    fontSize:18,
+    fontSize:16,
     height:40,
     borderWidth:1,
     borderColor:'#ccc',
@@ -319,7 +319,7 @@ var styles = StyleSheet.create({
     paddingLeft:15
   },
   subTitle:{
-    fontSize:18,
+    fontSize:16,
     width:80,
     color:'rgb(39,217,179)'
   },

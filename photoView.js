@@ -42,8 +42,7 @@ const PhotoView = React.createClass({
 
         AsyncStorage.getItem('loginStatus',function(error,result){
             //mock data   ***************************************************
-            error = 1;
-            result = 'dcy$dcy0701'
+
             let username = result.split('$')[0];
             formData.append('user',username);
             let options = {headers:{}};

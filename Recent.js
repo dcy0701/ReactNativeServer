@@ -189,19 +189,20 @@ var styles = StyleSheet.create({
     flex: 1,
   },
   title: {
-    fontSize: 16,
+    fontSize: 13,
     marginBottom: 8,
     textAlign: 'center',
     color:'rgb(39,217,179)'
   },
   year: {
+    fontSize: 13,
     textAlign: 'center',
     color:'rgb(39,217,179)'
   },
   thumbnail: {
     bottom:0,
-    width: 70,
-    height: 91,
+    width: 56,
+    height: 72,
   },
   listView: {
     paddingTop: 20,
